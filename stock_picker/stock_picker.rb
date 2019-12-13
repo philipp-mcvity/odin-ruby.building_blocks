@@ -12,11 +12,11 @@ def stock_picker(stock_prices)
       [daily_array.max, daily_array.index(daily_array.max) + day + 1]
   end
   best_pick = future_returns.max_by { |_k, v| v[0] }
-  best_pick_arr = best_pick[0], best_pick[1][1]
-  print "#{best_pick_arr}\n=>
-Buy on day #{best_pick[0]} for $#{stock_prices[best_pick[0]]} and
-sell on day #{best_pick[1][1]} for $#{stock_prices[best_pick[1][1]]}
-to achieve the maximum profit of $#{best_pick[1][0]}.\n"
+  print "#{best_pick_arr = best_pick[0], best_pick[1][1]}\n"
+#   print "#{best_pick_arr}\n=>
+# Buy on day #{best_pick[0]} for $#{stock_prices[best_pick[0]]} and
+# sell on day #{best_pick[1][1]} for $#{stock_prices[best_pick[1][1]]}
+# to achieve the maximum profit of $#{best_pick[1][0]}.\n"
 end
 
 puts "Enter
@@ -33,11 +33,11 @@ end
 case input
 when 1
   stock_odin = [17, 3, 6, 9, 15, 8, 6, 1, 10]
-  puts "the default 'Odin-Stock': #{stock_odin}\n\n"
+  puts
   stock_picker(stock_odin)
 else
   stock_rand = []
   9.times { stock_rand << rand(21) }
-  puts "stock-values: #{stock_rand}\n\n"
+  puts "> random stock values: #{stock_rand}\n\n"
   stock_picker(stock_rand)
 end
