@@ -1,34 +1,28 @@
 #!/usr/bin/ruby
 # frozen_string_literal: true
 
-def caesar_cipher(string, shift)
-  array_dec = string.bytes
-  array_dec_rot = []
-  array_dec.map! do |dec|
-    pos = dec + shift
-    if (97..122).include? dec
-      dec = case pos
-            when 97..122
-              pos
-            when 123..148
-              pos - 26
-            when 71..96
-              pos + 26
-            end
+def caesar_cipher(string, rot)
+  case_ary = string.split('').map { |n| n != n.downcase }
+  bytes_ary = string.downcase.bytes
+  rot_ary = []
+  bytes_ary.each do |n|
+    if (97..122).include?(n)
+      pos = n + rot
+      byte = case pos
+             when 97..122
+               pos
+             when 123..148
+               pos - 26
+             when 71..96
+               pos + 26
+             end
+    else
+      byte = n
     end
-    if (65..90).include? dec
-      dec = case pos
-            when 65..90
-              pos
-            when 91..117
-              pos - 26
-            when 39..64
-              pos + 26
-            end
-    end
-    array_dec_rot << dec
+    rot_ary << byte.chr
   end
-  array_dec_rot.map!(&:chr).join
+  rot_ary.map!.with_index { |n, i| case_ary[i] ? n.upcase : n }
+  rot_ary.join
 end
 
 puts 'Input:'
@@ -38,13 +32,13 @@ while string.empty?
   string = gets.chomp
 end
 
-puts 'Shift:'
-shift_input = gets.chomp.to_i
-while shift_input.zero?
-  puts 'Shift must be an Integer not equal to zero:'
-  shift_input = gets.chomp.to_i
+puts 'Rotation:'
+rot_input = gets.chomp.to_i
+while rot_input.zero?
+  puts 'Rotation must be an Integer not equal to zero:'
+  rot_input = gets.chomp.to_i
 end
-shift = shift_input % 26
+rot = rot_input % 26
 
-print caesar_cipher(string, shift)
+print caesar_cipher(string, rot)
 puts
