@@ -2,6 +2,8 @@
 #### Ruby
 ##### PROJECT: BUILDING BLOCKS
 
-Warmup: Fibonacci
+Project 1: Caesar Cipher
 
-Project: Merge Sort
+Project 2: Stock Picker
+
+Project 3: Substrings
