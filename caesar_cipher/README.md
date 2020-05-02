@@ -5,3 +5,6 @@ Implement a caesar cipher that takes in a string and the shift factor and then o
   > caesar_cipher("What a string!", 5)
   => "Bmfy f xywnsl!"
 ~~~
+
+###### Assignment 2:
+Write tests with RSpec for all possible cases.
